@@ -17,8 +17,8 @@ var app = express()
 app.use(bodyParser.json())
 // Router vers LivreRouter
 var router = require('./App/Router/LivreRouter')
-app.use(router)
 
+//Debug CORS Policy
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(
@@ -31,6 +31,7 @@ app.use((req, res, next) => {
     );
     next();
 });
+app.use('/',router);
 
 
 router.get('/', function(req,res){
